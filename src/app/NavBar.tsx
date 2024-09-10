@@ -14,6 +14,7 @@ export default function NavBar() {
       <ul className="flex space-x-6">
         <Link href="/">Home</Link>
         <Link href="/heroes">Heroes</Link>
+        <Link href="/builds">Builds</Link>
       </ul>
     </nav>
   );

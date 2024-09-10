@@ -21,6 +21,7 @@ export default function HeroesPage() {
     { name: "Shiv", description: "DoT Burst Assassin" },
     { name: "Vindicta", description: "Sniper Assassin" },
     { name: "Viscous", description: "Stall Disruption Tank" },
+    { name: "Warden", description: "Debuff Tank" },
     { name: "Wraith", description: "Mobility Disruption Duelist" },
     { name: "Yamato", description: "Mobility Burst Assassin" },
   ];
@@ -35,7 +36,7 @@ export default function HeroesPage() {
 
 function Hero({ hero }: any) {
   return (
-    <div className="col-span-2 row-span-2 flex flex-col justify-center items-center bg-zinc-100">
+    <div className="col-span-3 row-span-2 flex flex-col justify-center items-center bg-zinc-100">
       <p>{hero.name}</p>
       <p>{hero.description}</p>
     </div>
