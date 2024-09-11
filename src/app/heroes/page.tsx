@@ -1,5 +1,5 @@
+import Link from "next/link";
 import React from "react";
-import { TbTank } from "react-icons/tb";
 
 export default function HeroesPage() {
   const heroList = [
@@ -36,9 +36,12 @@ export default function HeroesPage() {
 
 function Hero({ hero }: any) {
   return (
-    <div className="col-span-3 row-span-2 flex flex-col justify-center items-center bg-zinc-100">
+    <Link
+      href={`/heroes/${hero.name}`}
+      className="col-span-6  xl:col-span-3 row-span-1  xl:row-span-2 flex flex-col justify-center items-center bg-zinc-100 hover:bg-zinc-200"
+    >
       <p>{hero.name}</p>
       <p>{hero.description}</p>
-    </div>
+    </Link>
   );
 }
