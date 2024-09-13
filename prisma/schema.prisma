@@ -20,4 +20,19 @@ model Hero {
   blurb       String   @db.Text
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  weapon      Weapon?
+}
+
+model Weapon {
+  id           Int      @id @default(autoincrement())
+  dps          Float
+  bulletdamage Float
+  ammo         Float
+  bulletpersec Float
+  lightmelee   Float
+  heavymelee   Float
+  hero         Hero     @relation(fields: [heroId], references: [id])
+  heroId       Int      @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }

@@ -2,6 +2,8 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <h1 className="text-2xl font-extrabold">Welcome to Deadlock Tracker</h1>
+    <section className="p-2">
+      <h1 className="text-2xl font-extrabold">Welcome to Deadlock Tracker</h1>
+    </section>
   );
 }
