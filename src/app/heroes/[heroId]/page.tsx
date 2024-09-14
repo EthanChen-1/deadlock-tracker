@@ -1,5 +1,7 @@
 import React from "react";
 
+export const revalidate = 60;
+
 async function getHero(id: any) {
   const res = await fetch(`http://localhost:3000/api/heroes/${id}`, {
     method: "GET",
@@ -17,13 +19,22 @@ async function getWeapon(id: any) {
   return data;
 }
 
+async function getVitality(id: any) {
+  const res = await fetch(`http:localhost:3000/api/vitality/${id}`, {
+    method: "GET",
+  });
+  const data = await res.json();
+  return data;
+}
+
 export default async function page({ params }: any) {
   const { heroId } = params;
   const hero = await getHero(heroId);
   const weapon = await getWeapon(heroId);
+  const vitality = await getVitality(heroId);
   return (
     <section className="flex flex-col justify-center items-center p-2 h-full">
-      <div className="w-2/6 border-2 flex flex-col flex-wrap justify-center items-center gap-y-2">
+      <div className="relative w-2/6 border-2 flex flex-col flex-wrap justify-center items-center gap-y-2">
         <img
           alt={`An image of ${hero.name}`}
           src={`/Deadlock_gameasset_Hero_${hero.name}.png`}
@@ -31,7 +42,7 @@ export default async function page({ params }: any) {
 
         <Hero hero={hero} />
         <Weapon weapon={weapon} />
-        <Vitality />
+        <Vitality vitality={vitality} />
       </div>
     </section>
   );
@@ -103,7 +114,16 @@ function Weapon({ weapon }: any) {
   );
 }
 
-function Vitality() {
+function Vitality({ vitality }: any) {
+  const {
+    health,
+    healthregen,
+    bulletresist,
+    spiritresist,
+    movespeed,
+    sprintspeed,
+    stamina,
+  } = vitality;
   return (
     <>
       <h1>Vitality</h1>
@@ -112,19 +132,19 @@ function Vitality() {
           <tbody>
             <tr className="odd:bg-zinc-100">
               <th className="p-2">Max Health:</th>
-              <td>600</td>
+              <td>{500}</td>
             </tr>
             <tr>
               <th className="p-2">Bullet Resist:</th>
-              <td>0%</td>
+              <td>{bulletresist}%</td>
             </tr>
             <tr className="odd:bg-zinc-100">
               <th className="p-2">Move Speed:</th>
-              <td>6.5m/s</td>
+              <td>{movespeed}m/s</td>
             </tr>
             <tr>
               <th className="p-2">Stamina:</th>
-              <td>3</td>
+              <td>{stamina}</td>
             </tr>
           </tbody>
         </table>
@@ -132,15 +152,15 @@ function Vitality() {
           <tbody>
             <tr className="odd:bg-zinc-100">
               <th className="p-2">Health Regen:</th>
-              <td>1</td>
+              <td>{healthregen}</td>
             </tr>
             <tr>
               <th className="p-2">Spirit Resist:</th>
-              <td>0%</td>
+              <td>{spiritresist}%</td>
             </tr>
             <tr className="odd:bg-zinc-100">
               <th className="p-2">Sprint Speed:</th>
-              <td>0m/s</td>
+              <td>{sprintspeed}m/s</td>
             </tr>
             <tr>
               <th className="h-full"></th>
