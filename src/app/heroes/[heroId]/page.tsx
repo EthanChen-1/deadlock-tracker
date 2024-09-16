@@ -1,6 +1,6 @@
 import React from "react";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 async function getHero(id: any) {
   const res = await fetch(`http://localhost:3000/api/heroes/${id}`, {
@@ -34,7 +34,7 @@ export default async function page({ params }: any) {
   const vitality = await getVitality(heroId);
   return (
     <section className="flex flex-col justify-center items-center p-2 h-full">
-      <div className="relative w-2/6 border-2 flex flex-col flex-wrap justify-center items-center gap-y-2">
+      <div className="relative w-2/6 border-2 flex flex-col flex-wrap justify-center items-center gap-2">
         <img
           alt={`An image of ${hero.name}`}
           src={`/Deadlock_gameasset_Hero_${hero.name}.png`}
