@@ -10,6 +10,15 @@ export async function GET(
     where: {
       heroId: parseInt(heroId),
     },
+    select: {
+      health: true,
+      healthregen: true,
+      bulletresist: true,
+      spiritresist: true,
+      movespeed: true,
+      sprintspeed: true,
+      stamina: true,
+    },
   });
 
   return NextResponse.json(res, { status: 200 });

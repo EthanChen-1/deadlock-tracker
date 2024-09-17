@@ -27,20 +27,33 @@ async function getVitality(id: any) {
   return data;
 }
 
+async function getAbilities(id: any) {
+  const res = await fetch(`http:localhost:3000/api/ability/${id}`, {
+    method: "GET",
+  });
+  const data = await res.json();
+  return data;
+}
+
 export default async function page({ params }: any) {
   const { heroId } = params;
   const hero = await getHero(heroId);
   const weapon = await getWeapon(heroId);
   const vitality = await getVitality(heroId);
+  const abilities = await getAbilities(heroId);
   return (
-    <section className="flex flex-col justify-center items-center p-2 h-full">
-      <div className="relative w-2/6 border-2 flex flex-col flex-wrap justify-center items-center gap-2">
+    <section className="grid grid-cols-2 grid-rows-1 gap-2 p-2">
+      <div>
+        <Abilities abilities={abilities} />
+      </div>
+
+      <div className="relative border-2 flex flex-col flex-wrap justify-center items-center gap-2 h-[calc(100vh-4.5rem)]">
         <img
           alt={`An image of ${hero.name}`}
           src={`/Deadlock_gameasset_Hero_${hero.name}.png`}
         />
 
-        <Hero hero={hero} />
+        <Bio hero={hero} />
         <Weapon weapon={weapon} />
         <Vitality vitality={vitality} />
       </div>
@@ -48,7 +61,7 @@ export default async function page({ params }: any) {
   );
 }
 
-function Hero({ hero }: any) {
+function Bio({ hero }: any) {
   const { name, description, blurb } = hero;
   return (
     <table>
@@ -132,7 +145,7 @@ function Vitality({ vitality }: any) {
           <tbody>
             <tr className="odd:bg-zinc-100">
               <th className="p-2">Max Health:</th>
-              <td>{500}</td>
+              <td>{health}</td>
             </tr>
             <tr>
               <th className="p-2">Bullet Resist:</th>
@@ -170,5 +183,34 @@ function Vitality({ vitality }: any) {
         </table>
       </div>
     </>
+  );
+}
+
+function Abilities({ abilities }: any) {
+  const abilityPointCost = [1, 2, 5];
+  return (
+    <section className="grid grid-cols-1 grid-rows-4 gap-4 h-full">
+      {abilities.map((ability: any, index: number) => {
+        return (
+          <div key={ability.name + " " + index} className="bg-zinc-100 p-2 ">
+            <h2 className="text-2xl font-bold">{ability.name}</h2>
+            <p>{ability.description}</p>
+            <div className="grid grid-cols-3 grid-rows-1 gap-2">
+              {ability.upgrades.map((upgrade: any, index: number) => (
+                <div
+                  key={upgrade}
+                  className=" bg-zinc-200 flex flex-col flex-wrap"
+                >
+                  <div className="bg-zinc-400 p-1">
+                    {abilityPointCost[index]} Ability Point(s)
+                  </div>
+                  <div className="p-2">{upgrade}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </section>
   );
 }

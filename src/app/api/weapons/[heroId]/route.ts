@@ -10,6 +10,14 @@ export async function GET(
     where: {
       heroId: parseInt(heroId),
     },
+    select: {
+      dps: true,
+      bulletdamage: true,
+      ammo: true,
+      bulletpersec: true,
+      lightmelee: true,
+      heavymelee: true,
+    },
   });
 
   return NextResponse.json(res, { status: 200 });

@@ -6,15 +6,14 @@ export async function GET(
   context: { params: { heroId: string } }
 ) {
   const { heroId } = context.params;
-  const res = await prisma.hero.findUnique({
+  const res = await prisma.ability.findMany({
     where: {
-      id: parseInt(heroId),
+      heroId: parseInt(heroId),
     },
     select: {
-      id: true,
       name: true,
       description: true,
-      blurb: true,
+      upgrades: true,
     },
   });
 

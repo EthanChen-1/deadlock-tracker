@@ -2,9 +2,11 @@ import classNames from "classnames";
 import Link from "next/link";
 import React from "react";
 
+export const revalidate = 3600;
+
 async function getAllHeroes() {
   const res = await fetch("http://localhost:3000/api/heroes", {
-    cache: "no-cache",
+    method: "GET",
   });
   const data = await res.json();
   return data as any[];

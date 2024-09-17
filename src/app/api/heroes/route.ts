@@ -22,6 +22,12 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET() {
-  const hero = await prisma.hero.findMany();
+  const hero = await prisma.hero.findMany({
+    select: {
+      id: true,
+      name: true,
+      description: true,
+    },
+  });
   return NextResponse.json(hero, { status: 200 });
 }
