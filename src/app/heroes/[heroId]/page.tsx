@@ -1,50 +1,15 @@
 import React from "react";
 import SoulScaling from "./SoulScaling";
-
+import {
+  getHero,
+  getWeapon,
+  getVitality,
+  getAbilities,
+  getPowerIncrease,
+} from "./hero-detail-helper";
 export const revalidate = 3600;
 
-async function getHero(id: any) {
-  const res = await fetch(`http://localhost:3000/api/heroes/${id}`, {
-    method: "GET",
-  });
-  const data = await res.json();
-
-  return data;
-}
-
-async function getWeapon(id: any) {
-  const res = await fetch(`http:localhost:3000/api/weapons/${id}`, {
-    method: "GET",
-  });
-  const data = await res.json();
-  return data;
-}
-
-async function getVitality(id: any) {
-  const res = await fetch(`http:localhost:3000/api/vitality/${id}`, {
-    method: "GET",
-  });
-  const data = await res.json();
-  return data;
-}
-
-async function getAbilities(id: any) {
-  const res = await fetch(`http:localhost:3000/api/ability/${id}`, {
-    method: "GET",
-  });
-  const data = await res.json();
-  return data;
-}
-
-async function getPowerIncrease(id: any) {
-  const res = await fetch(`http:localhost:3000/api/powerincrease/${id}`, {
-    method: "GET",
-  });
-  const data = await res.json();
-  return data;
-}
-
-export default async function page({ params }: any) {
+export default async function HeroDetailPage({ params }: any) {
   const { heroId } = params;
   const hero = await getHero(heroId);
   const weapon = await getWeapon(heroId);
@@ -56,7 +21,7 @@ export default async function page({ params }: any) {
       <div className="col-span-6">
         <Abilities abilities={abilities} />
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="col-span-1 flex flex-col gap-2">
         <PowerIncrease powerincrease={powerincrease} />
         <SoulScaling />
       </div>
