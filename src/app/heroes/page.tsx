@@ -15,7 +15,7 @@ async function getAllHeroes() {
 export default async function HeroesPage() {
   const heroList = await getAllHeroes();
   return (
-    <section className="grid grid-cols-12 grid-rows-24 p-2 gap-2 h-screen">
+    <section className="grid grid-cols-12 grid-rows-24 p-2 gap-2 h-[calc(100vh-3.5rem)]">
       {heroList.map((hero: any) => {
         return <Hero key={hero.name} hero={hero} />;
       })}

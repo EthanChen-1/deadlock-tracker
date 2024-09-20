@@ -9,10 +9,10 @@ import classNames from "classnames";
 
 export default function NavBar() {
   const pathName = usePathname();
+  console.log(pathName);
   const links = [
     { label: "Home", href: "/" },
     { label: "Heroes", href: "/heroes" },
-    { label: "Builds", href: "/builds" },
   ];
   return (
     <nav className="flex space-x-6 h-14 border-b-2 items-center justify-left">

@@ -1,4 +1,5 @@
 import React from "react";
+import SoulScaling from "./SoulScaling";
 
 export const revalidate = 3600;
 
@@ -35,19 +36,31 @@ async function getAbilities(id: any) {
   return data;
 }
 
+async function getPowerIncrease(id: any) {
+  const res = await fetch(`http:localhost:3000/api/powerincrease/${id}`, {
+    method: "GET",
+  });
+  const data = await res.json();
+  return data;
+}
+
 export default async function page({ params }: any) {
   const { heroId } = params;
   const hero = await getHero(heroId);
   const weapon = await getWeapon(heroId);
   const vitality = await getVitality(heroId);
   const abilities = await getAbilities(heroId);
+  const powerincrease = await getPowerIncrease(heroId);
   return (
-    <section className="grid grid-cols-2 grid-rows-1 gap-2 p-2">
-      <div>
+    <section className="grid grid-cols-12 grid-rows-1 gap-2 p-2">
+      <div className="col-span-6">
         <Abilities abilities={abilities} />
       </div>
-
-      <div className="relative border-2 flex flex-col flex-wrap justify-center items-center gap-2 h-[calc(100vh-4.5rem)]">
+      <div className="flex flex-col gap-2">
+        <PowerIncrease powerincrease={powerincrease} />
+        <SoulScaling />
+      </div>
+      <div className="col-span-5 relative border-2 flex flex-col flex-wrap justify-center items-center gap-2 h-[calc(100vh-4.5rem)]">
         <img
           alt={`An image of ${hero.name}`}
           src={`/Deadlock_gameasset_Hero_${hero.name}.png`}
@@ -183,6 +196,27 @@ function Vitality({ vitality }: any) {
         </table>
       </div>
     </>
+  );
+}
+
+function PowerIncrease({ powerincrease }: any) {
+  const { modifiers } = powerincrease;
+  return (
+    <div className="text-center">
+      <h1 className="bg-zinc-400">Power Increase</h1>
+      <table>
+        <tbody>
+          {" "}
+          {modifiers.map((modifier: any) => {
+            return (
+              <tr key={modifier} className="odd:bg-zinc-100">
+                <td>{modifier}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
