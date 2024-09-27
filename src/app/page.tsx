@@ -8,10 +8,15 @@ export default function Home() {
         <h2 className="text-xl font-extrabold">Current Features</h2>
         <ul className="list-decimal list-inside">
           <li>Hero Details, Base Stats, and Abilities</li>
-          <li>Hero Soul Scaling</li>
+          <li>Soul Scaling Breakpoints</li>
+        </ul>
+        <h2 className="text-xl font-extrabold">In Progress</h2>
+        <ul>
+          <li>Sign Up/ Login</li>
         </ul>
         <h2 className="text-xl font-extrabold">Upcoming Features</h2>
         <ul className="list-decimal list-inside">
+          <li>News About Deadlock</li>
           <li>Hero Build Guides</li>
           <li>Leaderboards</li>
           <li>Player Search</li>

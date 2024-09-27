@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 
 export const metadata: Metadata = {
   title: "Deadlock Tracker",
-  description: "Look at the stats of your favorite players here",
+  description: "Find information on your favorite heroes",
 };
 
 const inter = Inter({ subsets: ["latin"] });

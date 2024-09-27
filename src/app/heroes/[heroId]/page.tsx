@@ -7,6 +7,7 @@ import {
   getAbilities,
   getPowerIncrease,
 } from "./hero-detail-helper";
+
 export const revalidate = 3600;
 
 export default async function HeroDetailPage({ params }: any) {
@@ -17,7 +18,7 @@ export default async function HeroDetailPage({ params }: any) {
   const abilities = await getAbilities(heroId);
   const powerincrease = await getPowerIncrease(heroId);
   return (
-    <section className="grid grid-cols-12 grid-rows-1 gap-2 p-2">
+    <section className="flex flex-col xl:grid xl:grid-cols-12 xl:grid-rows-1 gap-2 p-2">
       <div className="col-span-6">
         <Abilities abilities={abilities} />
       </div>
@@ -25,12 +26,11 @@ export default async function HeroDetailPage({ params }: any) {
         <PowerIncrease powerincrease={powerincrease} />
         <SoulScaling />
       </div>
-      <div className="col-span-5 relative border-2 flex flex-col flex-wrap justify-center items-center gap-2 h-[calc(100vh-4.5rem)]">
+      <div className="xl:col-span-5 border-2 flex flex-row flex-wrap justify-center items-center h-[calc(100vh-4.5rem)]">
         <img
           alt={`An image of ${hero.name}`}
           src={`/Deadlock_gameasset_Hero_${hero.name}.png`}
         />
-
         <Bio hero={hero} />
         <Weapon weapon={weapon} />
         <Vitality vitality={vitality} />
@@ -169,9 +169,8 @@ function PowerIncrease({ powerincrease }: any) {
   return (
     <div className="text-center">
       <h1 className="bg-zinc-400">Power Increase</h1>
-      <table>
+      <table className="w-full">
         <tbody>
-          {" "}
           {modifiers.map((modifier: any) => {
             return (
               <tr key={modifier} className="odd:bg-zinc-100">
@@ -188,18 +187,15 @@ function PowerIncrease({ powerincrease }: any) {
 function Abilities({ abilities }: any) {
   const abilityPointCost = [1, 2, 5];
   return (
-    <section className="grid grid-cols-1 grid-rows-4 gap-4 h-full">
+    <section className="grid grid-cols-1 grid-rows-4 gap-2 h-full">
       {abilities.map((ability: any, index: number) => {
         return (
           <div key={ability.name + " " + index} className="bg-zinc-100 p-2 ">
             <h2 className="text-2xl font-bold">{ability.name}</h2>
             <p>{ability.description}</p>
-            <div className="grid grid-cols-3 grid-rows-1 gap-2">
+            <div className="xl:grid xl:grid-cols-3 xl:grid-rows-1 gap-2">
               {ability.upgrades.map((upgrade: any, index: number) => (
-                <div
-                  key={upgrade}
-                  className=" bg-zinc-200 flex flex-col flex-wrap"
-                >
+                <div key={upgrade} className=" bg-zinc-200 flex flex-col ">
                   <div className="bg-zinc-400 p-1">
                     {abilityPointCost[index]} Ability Point(s)
                   </div>

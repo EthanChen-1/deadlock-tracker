@@ -5,7 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
 }
 
 datasource db {
@@ -14,12 +15,12 @@ datasource db {
 }
 
 model Hero {
-  id          Int         @id @default(autoincrement())
-  name        String      @db.VarChar(255)
-  description String      @db.Text
-  blurb       String      @db.Text
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
+  id          Int            @id @default(autoincrement())
+  name        String         @db.VarChar(255)
+  description String         @db.Text
+  blurb       String         @db.Text
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
   weapon      Weapon?
   vitality    Vitality?
   ability     Ability[]
@@ -69,4 +70,12 @@ model PowerIncrease {
   modifiers String[]
   hero      Hero     @relation(fields: [heroId], references: [id])
   heroId    Int      @unique
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @db.VarChar(255)
+  password  String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

@@ -13,6 +13,7 @@ export default function NavBar() {
   const links = [
     { label: "Home", href: "/" },
     { label: "Heroes", href: "/heroes" },
+    { label: "Sign Up", href: "/signup" },
   ];
   return (
     <nav className="flex space-x-6 h-14 border-b-2 items-center justify-left">

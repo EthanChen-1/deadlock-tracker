@@ -19,6 +19,5 @@ export async function POST(request: NextRequest) {
       heroId: body.heroId,
     },
   });
-
   return NextResponse.json(newAbility, { status: 201 });
 }

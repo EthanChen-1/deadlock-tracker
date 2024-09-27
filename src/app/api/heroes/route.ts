@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import prisma from "../../../../prisma/client";
+import { revalidatePath } from "next/cache";
 
 const createHeroSchema = z.object({
   name: z.string().min(1).max(255),
@@ -17,6 +18,8 @@ export async function POST(request: NextRequest) {
   const newHero = await prisma.hero.create({
     data: { name: body.name, description: body.description, blurb: body.blurb },
   });
+
+  revalidatePath("/heroes");
 
   return NextResponse.json(newHero, { status: 201 });
 }

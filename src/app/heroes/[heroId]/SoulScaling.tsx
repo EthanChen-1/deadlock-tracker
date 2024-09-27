@@ -109,7 +109,7 @@ export default function SoulScaling() {
   ];
   return (
     <div className="grid grid-cols-3 row-span-3 4 h-full w-full">
-      <div className="bg-zinc-200  grid grid-cols-1 grid-rows-33 text-center">
+      <div className="bg-zinc-200 grid grid-cols-1 grid-rows-33 text-center">
         {unlockAUPI.reverse().map((aupi, index) => (
           <div className="h-3" key={index}>
             {aupi}
