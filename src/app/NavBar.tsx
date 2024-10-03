@@ -9,14 +9,15 @@ import classNames from "classnames";
 
 export default function NavBar() {
   const pathName = usePathname();
-  console.log(pathName);
+
   const links = [
     { label: "Home", href: "/" },
     { label: "Heroes", href: "/heroes" },
-    { label: "Sign Up", href: "/signup" },
+    { label: "Items", href: "/items" },
   ];
+
   return (
-    <nav className="flex space-x-6 h-14 border-b-2 items-center justify-left">
+    <nav className="col-span-10 xl:col-span-11 flex space-x-6 h-14 border-b-2 items-center justify-left">
       <Link className="flex pl-2" href="/">
         <FaSkull />
         <FaLock />

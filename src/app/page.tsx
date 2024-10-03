@@ -11,8 +11,8 @@ export default function Home() {
           <li>Soul Scaling Breakpoints</li>
         </ul>
         <h2 className="text-xl font-extrabold">In Progress</h2>
-        <ul>
-          <li>Sign Up/ Login</li>
+        <ul className="list-decimal list-inside">
+          <li>Shop Items</li>
         </ul>
         <h2 className="text-xl font-extrabold">Upcoming Features</h2>
         <ul className="list-decimal list-inside">
