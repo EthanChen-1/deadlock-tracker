@@ -11,7 +11,10 @@ export async function POST(request: NextRequest) {
   const body = await request.json();
   const validation = createPowerIncreaseSchema.safeParse(body);
   if (!validation.success) {
-    return NextResponse.json(validation.error.errors, { status: 400 });
+    return NextResponse.json(
+      { errors: validation.error.flatten().fieldErrors },
+      { status: 400 }
+    );
   }
   const newAbility = await prisma.powerIncrease.create({
     data: {

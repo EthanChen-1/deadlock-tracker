@@ -13,7 +13,10 @@ export async function POST(request: NextRequest) {
   const body = await request.json();
   const validation = createHeroSchema.safeParse(body);
   if (!validation.success) {
-    return NextResponse.json(validation.error.errors, { status: 400 });
+    return NextResponse.json(
+      { errors: validation.error.flatten().fieldErrors },
+      { status: 400 }
+    );
   }
   const newHero = await prisma.hero.create({
     data: { name: body.name, description: body.description, blurb: body.blurb },

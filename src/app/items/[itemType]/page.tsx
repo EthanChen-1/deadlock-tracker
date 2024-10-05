@@ -23,7 +23,7 @@ export default function ItemsPage({ params }: any) {
           })}
         >
           <div className="flex text-xl gap-2 justify-center items-center rotate-[270deg]">
-            <MdCurrencyExchange size={30} /> 500
+            <MdCurrencyExchange size={30} color={"green"} /> 500
           </div>
         </div>
         <div
@@ -36,7 +36,7 @@ export default function ItemsPage({ params }: any) {
           })}
         >
           <div className="flex text-xl gap-2 justify-center items-center rotate-[270deg]">
-            <MdCurrencyExchange size={30} /> 1,250
+            <MdCurrencyExchange size={30} color={"green"} /> 1,250
           </div>
         </div>
         <div
@@ -49,7 +49,7 @@ export default function ItemsPage({ params }: any) {
           })}
         >
           <div className="flex text-xl gap-2 justify-center items-center rotate-[270deg]">
-            <MdCurrencyExchange size={30} /> 3000+
+            <MdCurrencyExchange size={30} color={"green"} /> 3000+
           </div>
         </div>
         <div
@@ -62,7 +62,7 @@ export default function ItemsPage({ params }: any) {
           })}
         >
           <div className="flex text-xl gap-2 justify-center items-center rotate-[270deg]">
-            <MdCurrencyExchange size={30} /> 6200+
+            <MdCurrencyExchange size={30} color={"green"} /> 6200+
           </div>
         </div>
       </div>
