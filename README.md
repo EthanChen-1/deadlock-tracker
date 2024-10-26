@@ -6,5 +6,8 @@ The Home Page:
 The List of Heroes Page:
 ![Picture of the heroes list of Deadlock Tracker](./screenshots/HeroesListPage.png)
 
+An Example Hero Page
+![Picture of Abram's Hero page](./screenshots/ExampleHeroPage.png)
+
 The Shop Items Page:
 ![alt text](./screenshots/ShopItemsPage.png)
