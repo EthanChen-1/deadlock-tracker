@@ -9,14 +9,14 @@ export default function Home() {
         <ul className="list-decimal list-inside">
           <li>Hero Details, Base Stats, and Abilities</li>
           <li>Soul Scaling Breakpoints</li>
+          <li>Shop Items</li>
         </ul>
         <h2 className="text-xl font-extrabold">In Progress</h2>
         <ul className="list-decimal list-inside">
-          <li>Shop Items</li>
+          <li>News About Deadlock</li>
         </ul>
         <h2 className="text-xl font-extrabold">Upcoming Features</h2>
         <ul className="list-decimal list-inside">
-          <li>News About Deadlock</li>
           <li>Hero Build Guides</li>
           <li>Leaderboards</li>
           <li>Player Search</li>

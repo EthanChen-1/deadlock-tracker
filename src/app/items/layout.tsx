@@ -7,7 +7,7 @@ export default function ItemLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="p-2 h-[calc(100vh-3.5em)] w-full">
+    <div className="h-[calc(100vh-3.5em)] w-full">
       <ItemNavBar />
       {children}
     </div>
